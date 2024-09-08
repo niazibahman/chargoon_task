@@ -22,7 +22,13 @@ function App() {
 
   const handleContextMenuClick = (actionKey: any) => {
     switch (actionKey) {
-      case '':
+      case 'ACTION1':
+        break;
+      case 'ACTION2':
+        break;
+      case 'ACTION3':
+        break;
+      case 'ACTION4':
         break;
     }
   }
