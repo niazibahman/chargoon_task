@@ -52,6 +52,43 @@ export function createTreeMockData(): NodeType[] {
 								}
 							],
 							accesses: [],
+						},
+						{
+							key: '5',
+							title: 'محمدعلی کلی(کارشناس رابط کاربری)',
+							parentKey: '2',
+							hierarchy: ['1', '2', '3', '4'],
+							users: [
+								{
+									title: 'mohammadali',
+									isDefault: true
+								},
+								{
+									title: 'mohammadalitest',
+									isDefault: false
+								}
+							],
+							children: [
+								{
+									key: '6',
+									title: 'جلال علوی(کارشناس رابط کاربری)',
+									parentKey: '5',
+									hierarchy: ['1', '2', '3', '4'],
+									users: [
+										{
+											title: 'jalal',
+											isDefault: true
+										},
+										{
+											title: 'jalaltest',
+											isDefault: false
+										}
+									],
+									children: [],
+									accesses: [],
+								}
+							],
+							accesses: [],
 						}
 					]
 				}

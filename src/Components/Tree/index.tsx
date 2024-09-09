@@ -9,7 +9,7 @@ import SearchResult from './searchResult';
 const { Search } = Input;
 
 interface Props {
-  handleContextMenuClick: (key: string) => void;
+  handleContextMenuClick: (key: string,nodeKey:string) => void;
 }
 
 const TreeExtended: React.FC<Props> = ({ handleContextMenuClick }) => {
@@ -37,7 +37,7 @@ const TreeExtended: React.FC<Props> = ({ handleContextMenuClick }) => {
   }
 
   return (
-    <div className='tree-wrap'>
+    <div onClick={(event)=>event.stopPropagation()} className='tree-wrap'>
       <Search style={{ marginBottom: 8 }} placeholder="جستجو" onChange={handleSearchInputChange} onPressEnter={handlePressEnter} />
       <Tree
         onExpand={onExpand}

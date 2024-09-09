@@ -4,7 +4,7 @@ import {ContextMenuTriggerEx, ContextMenuItemEx, ContextMenuEx } from '../Contex
 
 interface Props {
 	node: NodeType;
-	handleContextMenuClick: (key: string) => void;
+	handleContextMenuClick: (key: string,nodeKey:string) => void;
 }
 
 function Node({node, handleContextMenuClick}: Props) {
@@ -18,10 +18,10 @@ function Node({node, handleContextMenuClick}: Props) {
        />
          
       <ContextMenuEx  id={node.key}>
-        <ContextMenuItemEx handleClick={handleContextMenuClick('ACTION1')} title={'افزودن زیرشاخه'}/>
-        <ContextMenuItemEx handleClick={handleContextMenuClick('ACTION2')} title={'برش'}/>
-        <ContextMenuItemEx handleClick={handleContextMenuClick('ACTION3')} title={'چسباندن'}/>
-        <ContextMenuItemEx handleClick={handleContextMenuClick('ACTION4')} title={'حذف'}/>
+        <ContextMenuItemEx handleClick={()=>handleContextMenuClick('ACTION1',node.key)} title={'افزودن زیرشاخه'}/>
+        <ContextMenuItemEx handleClick={()=>handleContextMenuClick('ACTION2',node.key)} title={'برش'}/>
+        <ContextMenuItemEx handleClick={()=>handleContextMenuClick('ACTION3',node.key)} title={'چسباندن'}/>
+        <ContextMenuItemEx handleClick={()=>handleContextMenuClick('ACTION4',node.key)} title={'حذف'}/>
       </ContextMenuEx>
  
     </div>
