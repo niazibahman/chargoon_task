@@ -1,4 +1,3 @@
-import React from 'react';
 import { NodeType } from '../../types';
 import {ContextMenuTriggerEx, ContextMenuItemEx, ContextMenuEx } from '../ContextMenu';
 

@@ -1,6 +1,5 @@
 import { Input, Tree } from 'antd';
-import type { DataNode } from 'antd/es/tree';
-import React, { useContext, useMemo, useRef, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import AppContext from '../../appContext';
 import { NodeType } from '../../types';
 import Node from './node';
@@ -17,18 +16,40 @@ const TreeExtended: React.FC<Props> = ({ handleContextMenuClick }) => {
   const [autoExpandParent, setAutoExpandParent] = useState(true);
   const searchedKeyword = useRef();
   const [searchResultVisible, setSearchResultVisible] = useState(true);
+  const [searchedTitle,setSearchedTitle]= useState<string>('')
   const { treeData } = useContext(AppContext);
   
   const onExpand = (newExpandedKeys: any[]) => {
     setExpandedKeys(newExpandedKeys);
     setAutoExpandParent(false);
   };
+  function searchByTitle(data:NodeType[], searchTerm:string) {  
+    console.log(data,"bahman")
+    const results:NodeType[] = [];  
 
+    function searchRecursive(nodes:NodeType[]) {  
+        for (const node of nodes) {  
+            // Check if the current node's title includes the search term  
+            if (node.title.includes(searchTerm)) {  
+                results.push(node); // Add to results if it matches  
+            }  
+            // If the node has children, search in them recursively  
+            if (node.children && node.children.length) {  
+                searchRecursive(node.children);  
+            }  
+        }  
+    }  
+    
+    searchRecursive(data);  
+    return results;  
+} 
   const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-
+    console.log("ssssss")
+    setSearchedTitle(e.target.value);
   };
 
   const handlePressEnter = () => {
+    console.log("enterrrrr")
     setSearchResultVisible(true)
   }
 
@@ -46,7 +67,7 @@ const TreeExtended: React.FC<Props> = ({ handleContextMenuClick }) => {
         treeData={treeData}
         titleRender={titleRenderer}
       />
-      {searchResultVisible && <SearchResult items={[]} />}
+      {searchResultVisible && <SearchResult items={searchedTitle===''?[]: searchByTitle(treeData,searchedTitle)} />}
     </div>
   );
 };
